@@ -1,0 +1,43 @@
+package com.sanyam.newsapiclient.presentation.di
+
+import com.sanyam.newsapiclient.data.repository.NewsRepositoryImpl
+import com.sanyam.newsapiclient.data.repository.dataSource.NewsLocalDataSource
+import com.sanyam.newsapiclient.data.repository.dataSource.NewsRemoteDataSource
+import com.sanyam.newsapiclient.domain.repository.NewsRepository
+import dagger.Module
+import dagger.Provides
+import dagger.hilt.InstallIn
+import dagger.hilt.components.SingletonComponent
+import javax.inject.Singleton
+
+@Module
+@InstallIn(SingletonComponent::class)
+class RepositoryModule {
+
+    @Singleton
+    @Provides
+    fun provideNewsRepository(
+        newsRemoteDataSource: NewsRemoteDataSource,
+        newsLocalDataSource: NewsLocalDataSource
+    ): NewsRepository {
+        return NewsRepositoryImpl(
+            newsRemoteDataSource,
+            newsLocalDataSource
+        )
+    }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
