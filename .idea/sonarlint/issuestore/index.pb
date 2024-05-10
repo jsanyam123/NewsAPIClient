@@ -25,3 +25,5 @@ k
 app/build.gradle,f/4/f4a01d6a4fcb971362ec00a83903fd3902f52164
 |
 Lapp/src/androidTest/java/com/sanyam/newsapiclient/ExampleInstrumentedTest.kt,3/a/3a23f4ddd24cf54a5e48db69b51c5a9c0ca41bf6
+r
+Bapp/src/main/java/com/sanyam/newsapiclient/presentation/NewsApp.kt,7/c/7c89d1e654e139a59ac501b30f1b4b73f1f506b8

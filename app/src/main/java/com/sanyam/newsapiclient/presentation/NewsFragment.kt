@@ -1,4 +1,4 @@
-package com.sanyam.newsapiclient
+package com.sanyam.newsapiclient.presentation
 
 import android.os.Bundle
 import android.util.Log
@@ -12,6 +12,7 @@ import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.sanyam.newsapiclient.R
 import com.sanyam.newsapiclient.databinding.FragmentNewsBinding
 import com.sanyam.newsapiclient.presentation.adapter.NewsAdapter
 import com.sanyam.newsapiclient.presentation.viewmodel.NewsViewModel

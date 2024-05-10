@@ -1,10 +1,11 @@
-package com.sanyam.newsapiclient
+package com.sanyam.newsapiclient.presentation
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
+import com.sanyam.newsapiclient.R
 import com.sanyam.newsapiclient.databinding.ActivityMainBinding
 import com.sanyam.newsapiclient.presentation.adapter.NewsAdapter
 import com.sanyam.newsapiclient.presentation.viewmodel.NewsViewModel

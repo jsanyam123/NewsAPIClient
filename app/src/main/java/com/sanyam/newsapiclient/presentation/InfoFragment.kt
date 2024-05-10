@@ -1,4 +1,4 @@
-package com.sanyam.newsapiclient
+package com.sanyam.newsapiclient.presentation
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -10,6 +10,7 @@ import androidx.navigation.fragment.navArgs
 import com.sanyam.newsapiclient.databinding.FragmentInfoBinding
 import com.sanyam.newsapiclient.presentation.viewmodel.NewsViewModel
 import com.google.android.material.snackbar.Snackbar
+import com.sanyam.newsapiclient.R
 
 class InfoFragment : Fragment() {
     private lateinit var fragmentInfoBinding: FragmentInfoBinding
