@@ -5,11 +5,11 @@ A simple android project using [The News API](https://newsapi.org/).
 ## Screenshots
 <p>
 <img src="screenshots/1.jpeg" width="24%" height="40%"/>
-<img src="screenshots/1.jpeg" width="24%" height="40%"/>
-<img src="screenshots/1.jpeg" width="24%" height="40%"/>
-<img src="screenshots/1.jpeg" width="24%" height="40%"/>
-<img src="screenshots/1.jpeg" width="24%" height="40%"/>
-<img src="screenshots/1.jpeg" width="24%" height="40%"/>
+<img src="screenshots/2.jpeg" width="24%" height="40%"/>
+<img src="screenshots/3.jpeg" width="24%" height="40%"/>
+<img src="screenshots/4.jpeg" width="24%" height="40%"/>
+<img src="screenshots/5.jpeg" width="24%" height="40%"/>
+<img src="screenshots/6.jpeg" width="24%" height="40%"/>
 </p>
 
 ## How to build on your environment
