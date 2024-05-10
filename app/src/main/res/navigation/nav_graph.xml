@@ -32,4 +32,9 @@
             android:name="selected_article"
             app:argType="com.sanyam.newsapiclient.data.model.Article" />
     </fragment>
+    <fragment
+        android:id="@+id/userFragment"
+        android:name="com.sanyam.newsapiclient.presentation.UserFragment"
+        android:label="UserFragment"
+        tools:layout="@layout/fragment_user" />
 </navigation>

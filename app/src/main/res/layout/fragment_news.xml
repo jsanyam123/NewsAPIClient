@@ -7,11 +7,24 @@
     android:background="@color/layout_background"
     tools:context=".presentation.NewsFragment">
 
+
     <SearchView
         android:id="@+id/svNews"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:queryHint="Search"
         android:background="@color/search_background" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginLeft="8dp"
+        android:textSize="30sp"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:text="TOP HEADLINES" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvNews"

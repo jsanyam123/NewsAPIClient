@@ -14,7 +14,7 @@
         android:name="androidx.navigation.fragment.NavHostFragment"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="7"
+        android:layout_weight="11"
         app:defaultNavHost="true"
         app:navGraph="@navigation/nav_graph" />
 
@@ -23,7 +23,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:background="@color/search_background"
+        android:background="@color/list_background"
         app:itemTextColor="@color/list_text"
         app:itemIconTint="@color/list_text"
         app:menu="@menu/bottom_menu" />

@@ -101,3 +101,5 @@ e
 5app/src/main/java/com/sanyam/newsapiclient/NewsApp.kt,a/0/a0cb73fabdea023c64a8112fd960e0dd3b064812
 x
 Happ/src/main/java/com/sanyam/newsapiclient/presentation/SavedFragment.kt,0/8/08fcce7a2c42a5fc9e9cedfcc77ffdf5033bdeed
+w
+Gapp/src/main/java/com/sanyam/newsapiclient/presentation/UserFragment.kt,e/c/ec48040dd3fc078b9d84d1e167ee77ad19a37937
