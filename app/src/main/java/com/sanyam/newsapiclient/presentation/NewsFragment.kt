@@ -13,6 +13,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.sanyam.newsapiclient.R
+import com.sanyam.newsapiclient.data.util.Resource
 import com.sanyam.newsapiclient.databinding.FragmentNewsBinding
 import com.sanyam.newsapiclient.presentation.adapter.NewsAdapter
 import com.sanyam.newsapiclient.presentation.viewmodel.NewsViewModel
@@ -20,12 +21,11 @@ import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
-
 class NewsFragment : Fragment() {
     private  lateinit var viewModel: NewsViewModel
     private lateinit var newsAdapter: NewsAdapter
     private lateinit var fragmentNewsBinding: FragmentNewsBinding
-    private var country = "us"
+    private var country = "in"
     private var page = 1
     private var isScrolling = false
     private var isLoading = false
@@ -59,37 +59,36 @@ class NewsFragment : Fragment() {
     }
 
     private fun viewNewsList() {
-
         viewModel.getNewsHeadLines(country,page)
-        viewModel.newsHeadLines.observe(viewLifecycleOwner,{response->
-            when(response){
-               is com.sanyam.newsapiclient.data.util.Resource.Success->{
-
-                     hideProgressBar()
-                     response.data?.let {
-                         Log.i("MYTAG","came here ${it.articles.toList().size}")
-                         newsAdapter.differ.submitList(it.articles.toList())
-                         if(it.totalResults%20 == 0) {
-                              pages = it.totalResults / 20
-                         }else{
-                             pages = it.totalResults/20+1
-                         }
-                         isLastPage = page == pages
-                     }
-               }
-                is com.sanyam.newsapiclient.data.util.Resource.Error->{
-                   hideProgressBar()
-                   response.message?.let {
-                       Toast.makeText(activity,"An error occurred : $it", Toast.LENGTH_LONG).show()
-                   }
+        viewModel.newsHeadLines.observe(viewLifecycleOwner) { response ->
+            when (response) {
+                is Resource.Success -> {
+                    hideProgressBar()
+                    response.data?.let {
+                        Log.i("MYTAG", "came here ${it.articles.toList().size}")
+                        newsAdapter.differ.submitList(it.articles.toList())
+                        pages = if (it.totalResults % 20 == 0) {
+                            it.totalResults / 20
+                        } else {
+                            it.totalResults / 20 + 1
+                        }
+                        isLastPage = page == pages
+                    }
                 }
 
-                is com.sanyam.newsapiclient.data.util.Resource.Loading->{
+                is Resource.Error -> {
+                    hideProgressBar()
+                    response.message?.let {
+                        Toast.makeText(activity, "An error occurred : $it", Toast.LENGTH_LONG)
+                            .show()
+                    }
+                }
+
+                is Resource.Loading -> {
                     showProgressBar()
                 }
-
             }
-        })
+        }
     }
 
     private fun initRecyclerView() {
@@ -146,7 +145,7 @@ class NewsFragment : Fragment() {
      fragmentNewsBinding.svNews.setOnQueryTextListener(
          object : SearchView.OnQueryTextListener{
              override fun onQueryTextSubmit(p0: String?): Boolean {
-                 viewModel.searchNews("us",p0.toString(),page)
+                 viewModel.searchNews(country, p0.toString(), page)
                  viewSearchedNews()
                  return false
              }
@@ -154,74 +153,47 @@ class NewsFragment : Fragment() {
              override fun onQueryTextChange(p0: String?): Boolean {
                  MainScope().launch {
                      delay(2000)
-                     viewModel.searchNews("us", p0.toString(), page)
+                     viewModel.searchNews(country, p0.toString(), page)
                      viewSearchedNews()
                  }
                  return false
              }
-
          })
 
          fragmentNewsBinding.svNews.setOnCloseListener(
-             object :SearchView.OnCloseListener{
-                 override fun onClose(): Boolean {
-                     initRecyclerView()
-                     viewNewsList()
-                     return false
-                 }
-
+             SearchView.OnCloseListener {
+                 initRecyclerView()
+                 viewNewsList()
+                 false
              })
    }
 
-
-
-
    fun viewSearchedNews(){
-       viewModel.searchedNews.observe(viewLifecycleOwner,{response->
-           when(response){
-               is com.sanyam.newsapiclient.data.util.Resource.Success->{
-
+       viewModel.searchedNews.observe(viewLifecycleOwner) { response ->
+           when (response) {
+               is Resource.Success -> {
                    hideProgressBar()
                    response.data?.let {
-                       Log.i("MYTAG","came here ${it.articles.toList().size}")
+                       Log.i("MYTAG", "came here ${it.articles.toList().size}")
                        newsAdapter.differ.submitList(it.articles.toList())
-                       if(it.totalResults%20 == 0) {
-                           pages = it.totalResults / 20
-                       }else{
-                           pages = it.totalResults/20+1
+                       pages = if (it.totalResults % 20 == 0) {
+                           it.totalResults / 20
+                       } else {
+                           it.totalResults / 20 + 1
                        }
                        isLastPage = page == pages
                    }
                }
-               is com.sanyam.newsapiclient.data.util.Resource.Error->{
+               is Resource.Error -> {
                    hideProgressBar()
                    response.message?.let {
-                       Toast.makeText(activity,"An error occurred : $it", Toast.LENGTH_LONG).show()
+                       Toast.makeText(activity, "An error occurred : $it", Toast.LENGTH_LONG).show()
                    }
                }
-
-               is com.sanyam.newsapiclient.data.util.Resource.Loading->{
+               is Resource.Loading -> {
                    showProgressBar()
                }
-
            }
-       })
+       }
    }
-
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

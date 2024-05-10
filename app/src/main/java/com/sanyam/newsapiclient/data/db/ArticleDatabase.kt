@@ -11,7 +11,7 @@ import com.sanyam.newsapiclient.data.model.Article
     exportSchema = false
 )
 @TypeConverters(Converters::class)
-abstract  class ArticleDatabase : RoomDatabase(){
+abstract class ArticleDatabase : RoomDatabase() {
     abstract fun getArticleDAO():ArticleDAO
 }
 
